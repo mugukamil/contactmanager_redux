@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/mugukamil.github.io/contactmanager_redux/static/css/main.cfda8877.chunk.css",
-    "main.js": "/mugukamil.github.io/contactmanager_redux/static/js/main.7d15f871.chunk.js",
-    "main.js.map": "/mugukamil.github.io/contactmanager_redux/static/js/main.7d15f871.chunk.js.map",
-    "runtime-main.js": "/mugukamil.github.io/contactmanager_redux/static/js/runtime-main.6478df38.js",
-    "runtime-main.js.map": "/mugukamil.github.io/contactmanager_redux/static/js/runtime-main.6478df38.js.map",
-    "static/css/2.2a86faee.chunk.css": "/mugukamil.github.io/contactmanager_redux/static/css/2.2a86faee.chunk.css",
-    "static/js/2.c3c30cbe.chunk.js": "/mugukamil.github.io/contactmanager_redux/static/js/2.c3c30cbe.chunk.js",
-    "static/js/2.c3c30cbe.chunk.js.map": "/mugukamil.github.io/contactmanager_redux/static/js/2.c3c30cbe.chunk.js.map",
-    "index.html": "/mugukamil.github.io/contactmanager_redux/index.html",
-    "precache-manifest.cb3f24c93160a62073ffbb7b51aa55f0.js": "/mugukamil.github.io/contactmanager_redux/precache-manifest.cb3f24c93160a62073ffbb7b51aa55f0.js",
-    "service-worker.js": "/mugukamil.github.io/contactmanager_redux/service-worker.js",
-    "static/css/2.2a86faee.chunk.css.map": "/mugukamil.github.io/contactmanager_redux/static/css/2.2a86faee.chunk.css.map",
-    "static/css/main.cfda8877.chunk.css.map": "/mugukamil.github.io/contactmanager_redux/static/css/main.cfda8877.chunk.css.map",
-    "static/js/2.c3c30cbe.chunk.js.LICENSE.txt": "/mugukamil.github.io/contactmanager_redux/static/js/2.c3c30cbe.chunk.js.LICENSE.txt"
+    "main.css": "/contactmanager_redux/static/css/main.cfda8877.chunk.css",
+    "main.js": "/contactmanager_redux/static/js/main.cd296fef.chunk.js",
+    "main.js.map": "/contactmanager_redux/static/js/main.cd296fef.chunk.js.map",
+    "runtime-main.js": "/contactmanager_redux/static/js/runtime-main.650516c3.js",
+    "runtime-main.js.map": "/contactmanager_redux/static/js/runtime-main.650516c3.js.map",
+    "static/css/2.2a86faee.chunk.css": "/contactmanager_redux/static/css/2.2a86faee.chunk.css",
+    "static/js/2.c3c30cbe.chunk.js": "/contactmanager_redux/static/js/2.c3c30cbe.chunk.js",
+    "static/js/2.c3c30cbe.chunk.js.map": "/contactmanager_redux/static/js/2.c3c30cbe.chunk.js.map",
+    "index.html": "/contactmanager_redux/index.html",
+    "precache-manifest.0e4d5c568ba299b4d91d96fe0bdab038.js": "/contactmanager_redux/precache-manifest.0e4d5c568ba299b4d91d96fe0bdab038.js",
+    "service-worker.js": "/contactmanager_redux/service-worker.js",
+    "static/css/2.2a86faee.chunk.css.map": "/contactmanager_redux/static/css/2.2a86faee.chunk.css.map",
+    "static/css/main.cfda8877.chunk.css.map": "/contactmanager_redux/static/css/main.cfda8877.chunk.css.map",
+    "static/js/2.c3c30cbe.chunk.js.LICENSE.txt": "/contactmanager_redux/static/js/2.c3c30cbe.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.6478df38.js",
+    "static/js/runtime-main.650516c3.js",
     "static/css/2.2a86faee.chunk.css",
     "static/js/2.c3c30cbe.chunk.js",
     "static/css/main.cfda8877.chunk.css",
-    "static/js/main.7d15f871.chunk.js"
+    "static/js/main.cd296fef.chunk.js"
   ]
 }

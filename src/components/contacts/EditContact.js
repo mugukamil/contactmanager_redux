@@ -1,52 +1,77 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getContact, updateContact } from "../../actions/contactActions";
+import useInput from "../hooks/useInput";
 import TextInputGroup from "../layout/TextInputGroup";
-import PropTypes from "prop-types";
 
-class EditContact extends Component {
-  state = {
-    name: "",
-    phone: "",
-    email: "",
-    errors: {},
-  };
+export default function EditContact(props) {
+  const contact = useSelector((state) => state.contact.contact);
+  const dispatch = useDispatch();
+  const {
+    value: name,
+    setValue: setName,
+    reset: resetName,
+    bind: bindName,
+  } = useInput("");
+  const {
+    value: phone,
+    setValue: setPhone,
+    reset: resetPhone,
+    bind: bindPhone,
+  } = useInput("");
+  const {
+    value: email,
+    setValue: setEmail,
+    reset: resetEmail,
+    bind: bindEmail,
+  } = useInput("");
+  const [errors, setErrors] = useState({});
 
-  UNSAFE_componentWillReceiveProps(nextProps, nextState) {
-    const { name, email, phone } = nextProps.contact;
-    this.setState({
-      name,
-      email,
-      phone,
-    });
-  }
+  // UNSAFE_componentWillReceiveProps(nextProps, nextState) {
+  //   const { name, email, phone } = nextProps.contact;
+  //   this.setState({
+  //     name,
+  //     email,
+  //     phone,
+  //   });
+  // }
 
-  componentDidMount() {
-    this.props.getContact(this.props.match.params.id);
-  }
+  useEffect(() => {
+    dispatch(getContact(props.match.params.id));
+    setName(contact.name);
+    setPhone(contact.phone);
+    setEmail(contact.email);
+  }, [
+    dispatch,
+    props.match.params.id,
+    setEmail,
+    setName,
+    setPhone,
+    contact.name,
+    contact.phone,
+    contact.email,
+  ]);
 
-  onSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-
-    const { name, email, phone } = this.state;
 
     // Check For Errors
     if (name === "") {
-      this.setState({ errors: { name: "Name is required" } });
+      setErrors({ ...errors, name: "Name is required" });
       return;
     }
 
     if (email === "") {
-      this.setState({ errors: { email: "Email is required" } });
+      setErrors({ ...errors, email: "Email is required" });
       return;
     }
 
     if (phone === "") {
-      this.setState({ errors: { phone: "Phone is required" } });
+      setErrors({ ...errors, phone: "Phone is required" });
       return;
     }
 
-    const { id } = this.props.match.params;
+    const { id } = props.match.params;
 
     const updContact = {
       id,
@@ -56,72 +81,50 @@ class EditContact extends Component {
     };
 
     //// UPDATE CONTACT ////
-    this.props.updateContact(updContact);
+    dispatch(updateContact(updContact));
 
     // Clear State
-    this.setState({
-      name: "",
-      email: "",
-      phone: "",
-      errors: {},
-    });
-    this.props.history.push("/");
+    resetName();
+    resetPhone();
+    resetEmail();
+    setErrors({});
+    props.history.push("/");
   };
 
-  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
-
-  render() {
-    const { name, email, phone, errors } = this.state;
-
-    return (
-      <div className="card mb-3">
-        <div className="card-header">Edit Contact</div>
-        <div className="card-body">
-          <form onSubmit={this.onSubmit}>
-            <TextInputGroup
-              label="Name"
-              name="name"
-              placeholder="Enter Name"
-              value={name}
-              onChange={this.onChange}
-              error={errors.name}
-            />
-            <TextInputGroup
-              label="Email"
-              name="email"
-              type="email"
-              placeholder="Enter Email"
-              value={email}
-              onChange={this.onChange}
-              error={errors.email}
-            />
-            <TextInputGroup
-              label="Phone"
-              name="phone"
-              placeholder="Enter Phone"
-              value={phone}
-              onChange={this.onChange}
-              error={errors.phone}
-            />
-            <input
-              type="submit"
-              value="Update Contact"
-              className="btn btn-light btn-block"
-            />
-          </form>
-        </div>
+  return (
+    <div className="card mb-3">
+      <div className="card-header">Edit Contact</div>
+      <div className="card-body">
+        <form onSubmit={onSubmit}>
+          <TextInputGroup
+            label="Name"
+            name="name"
+            placeholder="Enter Name"
+            error={errors.name}
+            {...bindName}
+          />
+          <TextInputGroup
+            label="Email"
+            name="email"
+            type="email"
+            placeholder="Enter Email"
+            error={errors.email}
+            {...bindEmail}
+          />
+          <TextInputGroup
+            label="Phone"
+            name="phone"
+            placeholder="Enter Phone"
+            error={errors.phone}
+            {...bindPhone}
+          />
+          <input
+            type="submit"
+            value="Update Contact"
+            className="btn btn-light btn-block"
+          />
+        </form>
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-EditContact.propTypes = {
-  contact: PropTypes.object.isRequired,
-  getContact: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({ contact: state.contact.contact });
-
-export default connect(mapStateToProps, { getContact, updateContact })(
-  EditContact
-);
